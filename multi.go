@@ -2,6 +2,7 @@ package teamcitymsg
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 )
 
@@ -29,6 +30,7 @@ func (b *multi) String() string {
 		kvps = append(kvps, fmt.Sprintf("%s='%s'", k, EscapeField(v)))
 	}
 
+	sort.Strings(kvps)
 	joined := strings.Join(kvps, " ")
 	return fmt.Sprintf("##teamcity[%s %s]", b.msgType, joined)
 }
