@@ -43,3 +43,37 @@ func TestEscapeField(t *testing.T) {
 		assert.Equal(t, "|0x1f60a", EscapeField("\u1f60a"))
 	})
 }
+
+func TestUnescapeField(t *testing.T) {
+	t.Run("apostrophe", func(t *testing.T) {
+		assert.Equal(t, "'", UnescapeField("|'"))
+	})
+
+	t.Run("line feed", func(t *testing.T) {
+		assert.Equal(t, "\n", UnescapeField("|n"))
+	})
+
+	t.Run("carriage return", func(t *testing.T) {
+		assert.Equal(t, "\r", UnescapeField("|r"))
+	})
+
+	t.Run("vertical bar", func(t *testing.T) {
+		assert.Equal(t, "|", UnescapeField("||"))
+	})
+
+	t.Run("opening bracket", func(t *testing.T) {
+		assert.Equal(t, "[", UnescapeField("|["))
+	})
+
+	t.Run("closing bracket", func(t *testing.T) {
+		assert.Equal(t, "]", UnescapeField("|]"))
+	})
+
+	t.Run("nothing", func(t *testing.T) {
+		assert.Equal(t, "hello world", UnescapeField("hello world"))
+	})
+
+	t.Run("middle", func(t *testing.T) {
+		assert.Equal(t, "hello\nworld", UnescapeField("hello|nworld"))
+	})
+}
