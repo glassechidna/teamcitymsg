@@ -1,0 +1,19 @@
+[10:01:22]E: bt1848 (1m:44s)
+[10:01:43]E: Step 1/3: Command Line (1m:13s)
+[10:01:44]i:	 [Step 1/3] Docker wrapper: setting permissions for '/home/teamcity/BuildAgent/temp/buildTmp' and '/home/teamcity/BuildAgent/work/4ce5b11c8d34dea' to 1777
+[10:01:44]i:	 [Step 1/3] Content of /home/teamcity/BuildAgent/temp/agentTmp/custom_script3870680088886282853 file:
+/home/teamcity/BuildAgent/temp/agentTmp/custom_script3870680088886282853
+
+[10:01:44] :	 [Step 1/3] Starting: /bin/sh -c "docker pull golang:1.12 && . /home/teamcity/BuildAgent/temp/agentTmp/docker-wrapper-189606259253902847.sh && docker run --rm -w /home/teamcity/BuildAgent/work/4ce5b11c8d34dea --label jetbrains.teamcity.buildId=163585 -v "/home/teamcity/BuildAgent/work/4ce5b11c8d34dea:/home/teamcity/BuildAgent/work/4ce5b11c8d34dea" -v "/home/teamcity/BuildAgent/temp/agentTmp:/home/teamcity/BuildAgent/temp/agentTmp" -v "/home/teamcity/BuildAgent/temp/buildTmp:/home/teamcity/BuildAgent/temp/buildTmp" -v "/home/teamcity/BuildAgent/system:/home/teamcity/BuildAgent/system" -v "/home/teamcity/BuildAgent/lib:/home/teamcity/BuildAgent/lib:ro" -v "/home/teamcity/BuildAgent/tools:/home/teamcity/BuildAgent/tools:ro" -v "/home/teamcity/BuildAgent/plugins:/home/teamcity/BuildAgent/plugins:ro" --env-file /home/teamcity/BuildAgent/temp/agentTmp/docker-wrapper-4780574152005985551.envList --entrypoint /bin/sh "golang:1.12" /home/teamcity/BuildAgent/temp/agentTmp/docker-shell-script-535517901088459107.sh"
+[10:02:30]W:	 [Step 1/3] go: extracting github.com/gogo/protobuf v1.2.1
+[10:02:32]W:	 [Step 1/3] + gofmt-teamcity
+[10:02:32]i:	 [Step 1/3] ##teamcity[inspectionType category='Code style' description='gofmt style violation' id='gofmt' name='gofmt']
+[10:02:32]W:	 [Step 1/3] + go test -json ./...
+[10:02:32]i:	 [Step 1/3] ##teamcity[inspection file='pkg/xhooks/handler.go' line='18' message=' 	*mux.Router|n }|n |n-func NewHandler    (api *ApiDefinition, sqser Sqser, snser Snser, lambdaer Lambdaer, transport http.RoundTripper) *Handler {|n-	r    := mux.NewRouter()|n+func NewHandler(api *ApiDefinition, sqser Sqser, snser Snser, lambdaer Lambdaer, transport http.RoundTripper) *Handler {|n+	r := mux.NewRouter()|n 	register(api, r, sqser, snser, lambdaer, transport)|n 	return &Handler{r}|n }|n' typeId='gofmt']
+[10:02:32]i:	 [Step 1/3] ##teamcity[inspection file='pkg/xhooks/handler.go' line='19' message=' 	*mux.Router|n }|n |n-func NewHandler    (api *ApiDefinition, sqser Sqser, snser Snser, lambdaer Lambdaer, transport http.RoundTripper) *Handler {|n-	r    := mux.NewRouter()|n+func NewHandler(api *ApiDefinition, sqser Sqser, snser Snser, lambdaer Lambdaer, transport http.RoundTripper) *Handler {|n+	r := mux.NewRouter()|n 	register(api, r, sqser, snser, lambdaer, transport)|n 	return &Handler{r}|n }|n' typeId='gofmt']
+[10:02:32]i:	 [Step 1/3] ##teamcity[inspection file='pkg/xhooks/sqs.go' line='18' message=' 	queueUrl string|n }|n |n-func     newSqsHandler(sqsApi sqsiface.SQSAPI, queueArn string) *sqsHandler {|n+func newSqsHandler(sqsApi sqsiface.SQSAPI, queueArn string) *sqsHandler {|n 	arnBits := strings.Split(queueArn, ":")|n 	region := arnBits|[3|]|n 	accountId := arnBits|[4|]|n' typeId='gofmt']
+[10:02:32]W:	 [Step 1/3] go: downloading github.com/glassechidna/lambdahttp v0.0.0-20190528033713-4ac64d99ec7d
+[10:03:07] : Calculating inspections statistics comparing to the build with id 163584 ...
+[10:03:07] : Total: 3 (+3 -0) Errors: 0 (+0 -0)
+[10:03:07]E: 1 failed test detected
+[10:03:07] : Build finished
